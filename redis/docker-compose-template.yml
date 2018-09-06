@@ -1,0 +1,12 @@
+version: '3.2'
+services:
+    redis:
+        image: {{ REDIS_IMAGE }}
+        restart: always
+        environment:
+            - HOST_IP=${HOST_IP}
+            - SERVICE_6379_NAME=redis
+            - SERVICE_6379_CHECK_TCP=true
+            - SERVICE_6379_CHECK_INTERVAL=30s
+        ports:
+            - "6379"

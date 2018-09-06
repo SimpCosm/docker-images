@@ -1,0 +1,53 @@
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
+
+[mysqld]
+skip-ssl
+bind-address = 0.0.0.0
+character-set-server = utf8
+collation-server = utf8_unicode_ci
+skip-character-set-client-handshake
+datadir = /var/lib/mysql
+
+innodb_read_only = 1
+read_only = 1
+super_read_only = 1
+transaction_read_only = 1
+transaction-isolation = READ-COMMITTED
+
+innodb_read_io_threads = 32
+innodb_write_io_threads = 1
+innodb_strict_mode = 1
+innodb_buffer_pool_size = 4G
+innodb_buffer_pool_dump_pct = 1
+innodb_flush_log_at_trx_commit = 0
+innodb_status_file = 1
+innodb_doublewrite = 0
+innodb_log_file_size = 256M
+innodb_log_buffer_size = 256M
+
+
+tmp_table_size = 256M
+max_heap_table_size = 256M
+sort_buffer_size = 256M
+thread_cache_size = 50
+range_optimizer_max_mem_size = 16M
+max_length_for_sort_data = 8192
+
+skip-log-bin
+sync_binlog = 0
+
+query_cache_type = 1
+query_cache_limit = 2M
+query_cache_size = 1G
+
+slow_query_log = 1
+long_query_time = 3
+#max_execution_time = 20000
+slow_query_log_file = /tmp/mysql-slow-query.log
+
+max_connections = 1000
+connect_timeout = 43200
+wait_timeout = 60000
+
+optimizer_search_depth = 5
